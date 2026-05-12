@@ -30,4 +30,4 @@ def cascadedNoiseFigure():
     noise_figure_LNA = LNA_NOISE_FACTOR
     noise_figure_Mixer = MIXER_NOISE_FACTOR - 1 / LNA_GAIN
     
-    return noise_figure_dB
+    return 0
