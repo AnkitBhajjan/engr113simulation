@@ -1,6 +1,6 @@
 import numpy as np
 from config import *
-import calculations.link_budget as link_budget
+import calculations.link_budget
 
 def dbToLinear(db):
     """
@@ -117,7 +117,7 @@ def signalToNoiseRatio():
     float
         Signal-to-noise ratio in dB
     """
-    received_power_dBW = linkBudget()
+    received_power_dBW = calculations.link_budget.linkBudget()
     noise_power_watts = noisePower()
     
     # Convert received power from dBW to watts
