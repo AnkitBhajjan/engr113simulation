@@ -1,5 +1,6 @@
 import numpy as np
 from config import *
+import calculations.link_budget as link_budget
 
 def dbToLinear(db):
     """
@@ -99,3 +100,33 @@ def noiseFigureReciever():
     nf_total_db = linearToDb(f_total)
 
     return nf_total_db
+
+def signalToNoiseRatio():
+    """
+    Calculate the signal-to-noise ratio (SNR) in decibels (dB) given the received power in dBW and the noise power in watts.
+    
+    Parameters
+    ----------
+    received_power_dBW : float
+        Received power at the receiver in dBW
+    noise_power_watts : float
+        Noise power in watts
+        
+    Returns
+    -------
+    float
+        Signal-to-noise ratio in dB
+    """
+    received_power_dBW = linkBudget()
+    noise_power_watts = noisePower()
+    
+    # Convert received power from dBW to watts
+    received_power_watts = dbToLinear(received_power_dBW)
+    
+    # Calculate SNR in linear scale
+    snr_linear = received_power_watts / noise_power_watts
+    
+    # Convert SNR to dB
+    snr_db = linearToDb(snr_linear)
+    
+    return snr_db
