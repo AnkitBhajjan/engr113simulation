@@ -1,14 +1,14 @@
 import numpy as np
 from config import *
 
-def freeSpacePathLoss(distance_km, frequency_hz=FREQUENCY):
+def freeSpacePathLoss(distance_km=DISTANCE_KM, frequency_hz=FREQUENCY):
     """
     Calculate free space path loss using Friis equation.
     
     Parameters
     ----------
     distance_km : float or np.ndarray
-        Distance between transmitter and receiver in kilometers
+        Distance between transmitter and receiver in kilometers (default from config)
     frequency_hz : float, optional
         Transmission frequency in Hz (default from config)
         
@@ -23,7 +23,7 @@ def freeSpacePathLoss(distance_km, frequency_hz=FREQUENCY):
 
     return path_loss
 
-def linkBudget(transmitter_power_dBW=TRANSMITTER_POWER, transmitter_gain_dBi=TRANSMITTER_GAIN, receiver_gain_dBi=RECEIVER_GAIN, distance_km=0):
+def linkBudget(transmitter_power_dBW=TRANSMITTER_POWER, transmitter_gain_dBi=TRANSMITTER_GAIN, receiver_gain_dBi=RECEIVER_GAIN, distance_km=DISTANCE_KM):
     """
     Calculate the received power at the receiver using the link budget equation.
     
@@ -36,7 +36,7 @@ def linkBudget(transmitter_power_dBW=TRANSMITTER_POWER, transmitter_gain_dBi=TRA
     receiver_gain_dBi : float, optional
         Gain of the receiver antenna in dBi (default from config)
     distance_km : float, optional
-        Distance between transmitter and receiver in kilometers (default 0)
+        Distance between transmitter and receiver in kilometers (default from config)
         
     Returns
     -------

@@ -18,6 +18,7 @@ TEMPERATURE = 290 # K, standard noise temperature
 BOLTZMANN_CONSTANT = 1.380649e-23 # J/K, Boltzmann's constant
 BANDWIDTH = 600e6 # Hz, bandwidth of the communication link (600 MHz for Ku-band)
 FREQUENCY = 1.50034e10 # Hz, frequency of the signal (15.0034 GHz for Ku-band)
+DISTANCE_KM = 37000 # km, distance between transmitter and receiver (GEO to ISS)
 
 # Transmitter Parameters
 TRANSMITTER_GAIN = 47.731 # dBi, watts leaving the HPA, gain of the transmitter antenna

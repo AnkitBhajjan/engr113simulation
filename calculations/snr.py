@@ -1,6 +1,12 @@
+import sys
+from pathlib import Path
+
+# Add parent directory to path to import config
+sys.path.insert(0, str(Path(__file__).parent.parent))
+
 import numpy as np
 from config import *
-import calculations.link_budget
+from calculations.link_budget import *
 
 def dbToLinear(db):
     """
@@ -101,23 +107,21 @@ def noiseFigureReciever():
 
     return nf_total_db
 
-def signalToNoiseRatio():
+def signalToNoiseRatio(distance_km=DISTANCE_KM):
     """
     Calculate the signal-to-noise ratio (SNR) in decibels (dB) given the received power in dBW and the noise power in watts.
     
     Parameters
     ----------
-    received_power_dBW : float
-        Received power at the receiver in dBW
-    noise_power_watts : float
-        Noise power in watts
+    distance_km : float, optional
+        Distance between transmitter and receiver in kilometers (default from config)
         
     Returns
     -------
     float
         Signal-to-noise ratio in dB
     """
-    received_power_dBW = calculations.link_budget.linkBudget()
+    received_power_dBW = linkBudget(distance_km=distance_km)
     noise_power_watts = noisePower()
     
     # Convert received power from dBW to watts
