@@ -20,6 +20,25 @@ def dbToLinear(db):
     
     return linear
 
+def linearToDb(linear):
+    """
+    Convert a value from linear scale to decibels (dB).
+    
+    Parameters
+    ----------
+    linear : float or np.ndarray
+        Value in linear scale to be converted
+        
+    Returns
+    -------
+    float or np.ndarray
+        Value in decibels
+    """
+    
+    db = 10 * np.log10(linear)
+    
+    return db
+
 def noisePower(temperature=TEMPERATURE, bandwidth=BANDWIDTH):
     """
     Calculate the noise power in watts using the formula P = kTB, where k is Boltzmann's constant, T is the noise temperature in Kelvin, and B is the bandwidth in Hz.
