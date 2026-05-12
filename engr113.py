@@ -1,11 +1,6 @@
-DATA_RATE = 600  # Mbps
-ORBIT_TIME = 90 * 60  # seconds
+from config import *
 
-coverage = {
-    1: 0.35,
-    2: 0.70,
-    3: 0.99
-    }
+
 #data transmitted in ONE iss orbit
 data = []
 for sats in coverage:
@@ -48,10 +43,6 @@ plt.show()
 #add ground control center locations
 import numpy as np
 from matplotlib.animation import FuncAnimation
-
-EARTH_RADIUS = 1
-ISS_RADIUS = 1.3
-GEO_RADIUS = 2.2
 
 # satellite angles
 geo_angles = np.radians([0, 120, 240])
