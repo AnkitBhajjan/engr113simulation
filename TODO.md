@@ -11,7 +11,7 @@
 
 ## Link Budget Tool
 - [X] Create `link_budget.py` module
-- [ ] Implement free-space path loss calculation using NumPy
+- [X] Implement free-space path loss calculation using NumPy
 - [ ] Calculate Friis transmission equation components
 - [ ] Model atmospheric attenuation effects
 - [ ] Implement multipath propagation effects
