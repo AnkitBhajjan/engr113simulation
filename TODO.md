@@ -10,7 +10,7 @@
 - [ ] Add distance for GEO to ISS animation
 
 ## Link Budget Tool
-- [ ] Create `link_budget.py` module
+- [X] Create `link_budget.py` module
 - [ ] Implement free-space path loss calculation using NumPy
 - [ ] Calculate Friis transmission equation components
 - [ ] Model atmospheric attenuation effects
@@ -20,6 +20,7 @@
 - [ ] Calculate bit error rate (BER) curves
 
 ## SNR Analysis
+- [X] Create `snr.py` module
 - [ ] Calculate receiver noise temperature
 - [ ] Implement noise figure calculations
 - [ ] Create SNR vs. distance curves using NumPy arrays
@@ -32,7 +33,7 @@
 - [ ] Create SNR comparison tables for different configurations
 
 ## Signal Propagation Module
-- [ ] Create `propagation.py` module
+- [X] Create `propagation.py` module
 - [ ] Implement distance-dependent path loss models
 - [ ] Model rain attenuation for different frequencies
 - [ ] Add ionospheric effects calculation
