@@ -60,7 +60,7 @@ def noisePower(temperature=TEMPERATURE, bandwidth=BANDWIDTH):
     
     return noise_power
 
-def cascadedNoiseFigureReciever():
+def noiseFigureReciever():
     """
     Calculate the noise figure of the system using the noise figures of the individual components and the Friis formula for noise figure.
     
@@ -85,10 +85,17 @@ def cascadedNoiseFigureReciever():
     In the current implementation, we will only consider the noise figures of the LNA and Mixer, as they are the dominant contributors to the overall noise figure of the system. The other components are assumed to have negligible noise figures for this analysis.
     """
 
-    # Noise figures of individual components in dB
-    noise_figure_LNA = LNA_NOISE_FACTOR
-    noise_figure_Mixer = MIXER_NOISE_FACTOR - 1 / LNA_GAIN
-    
+    # Convert dB to linear
+    nf_lna_linear = dbToLinear(LNA_NOISE_FACTOR)
+    gain_lna_linear = dbToLinear(LNA_GAIN)
 
+    nf_mixer_linear = dbToLinear(MIXER_NOISE_FACTOR)
+    gain_mixer_linear = dbToLinear(MIXER_GAIN)
 
-    return 0
+    # Friis formula for cascaded noise figure
+    f_total = nf_lna_linear + (nf_mixer_linear - 1) / gain_lna_linear
+
+    # Convert back to dB for readability
+    nf_total_db = linearToDb(f_total)
+
+    return nf_total_db
