@@ -54,24 +54,15 @@ This will:
 
 ## Configuration Parameters
 
-In `engr113.py`, modify the following parameters to adjust the simulation:
+All simulation parameters are centralized in `config.py`, including:
+- **Orbital Parameters**: ISS and GEO satellite altitudes, orbital period, data rate, and coverage percentages
+- **Physical Constants**: Speed of light, receiver noise temperature, communication frequency (Ku-band), and bandwidth
+- **Transmitter/Receiver Specs**: Antenna gains, transmit power, and receiver power threshold
+- **System Losses**: Implementation margins, feeder loss, pointing loss, and receiver noise figures
+- **Amplifier Characteristics**: LNA and mixer noise figures and gains
 
-```python
-DATA_RATE = 600          # Mbps - downlink data rate
-ORBIT_TIME = 90 * 60     # seconds - ISS orbital period
-EARTH_RADIUS = 1         # units - Earth radius (relative)
-ISS_RADIUS = 1.3         # units - ISS orbital altitude (relative)
-GEO_RADIUS = 2.2         # units - GEO orbital altitude (relative)
-```
+Modify these values to simulate different system configurations, frequency bands, or receiver designs.
 
-Coverage dictionary defines satellite constellation coverage percentages:
-```python
-coverage = {
-    1: 0.35,  # 1 satellite covers 35%
-    2: 0.70,  # 2 satellites cover 70%
-    3: 0.99   # 3 satellites cover 99%
-}
-```
 
 ## Future Development
 
@@ -83,6 +74,8 @@ The link budget tool will extend this project with:
 - Performance prediction under various conditions
 
 ## AI Usage Statement
+
+README and TODO generated with VSCode based claude, modified to fit project. Code hand written with VSCode autofill.
 
 # Authors
 Ankit Bhajjan
