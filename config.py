@@ -15,7 +15,7 @@ coverage = { # percentage of ISS orbit covered by GEO relay satellites
 ## Physical and Design Constants
 C = 299792458 # m/s, speed of light in vacuum
 TEMPERATURE = 290 # K, standard noise temperature
-
+BOLTZMANN_CONSTANT = 1.380649e-23 # J/K, Boltzmann's constant
 BANDWIDTH = 600e6 # Hz, bandwidth of the communication link (600 MHz for Ku-band)
 FREQUENCY = 1.50034e10 # Hz, frequency of the signal (15.0034 GHz for Ku-band)
 

@@ -1,7 +1,47 @@
 import numpy as np
 from config import *
 
-def cascadedNoiseFigure():
+def dbToLinear(db):
+    """
+    Convert a value from decibels (dB) to linear scale.
+    
+    Parameters
+    ----------
+    db : float or np.ndarray
+        Value in decibels to be converted
+        
+    Returns
+    -------
+    float or np.ndarray
+        Value in linear scale
+    """
+    
+    linear = 10 ** (db / 10)
+    
+    return linear
+
+def noisePower(temperature=TEMPERATURE, bandwidth=BANDWIDTH):
+    """
+    Calculate the noise power in watts using the formula P = kTB, where k is Boltzmann's constant, T is the noise temperature in Kelvin, and B is the bandwidth in Hz.
+    
+    Parameters
+    ----------
+    temperature : float, optional
+        Noise temperature in Kelvin (default from config)
+    bandwidth : float, optional
+        Bandwidth in Hz (default from config)
+        
+    Returns
+    -------
+    float
+        Noise power in watts
+    """
+    
+    noise_power = BOLTZMANN_CONSTANT * temperature * bandwidth
+    
+    return noise_power
+
+def cascadedNoiseFigureReciever():
     """
     Calculate the noise figure of the system using the noise figures of the individual components and the Friis formula for noise figure.
     
@@ -30,4 +70,6 @@ def cascadedNoiseFigure():
     noise_figure_LNA = LNA_NOISE_FACTOR
     noise_figure_Mixer = MIXER_NOISE_FACTOR - 1 / LNA_GAIN
     
+
+
     return 0
