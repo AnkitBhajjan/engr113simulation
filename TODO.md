@@ -48,7 +48,7 @@
 
 ## Code Organization
 - [ ] Refactor main simulation into functions (URGENT)
-- [ ] Add constants module for physical parameters
+- [x] Add constants module for physical parameters
 - [ ] Create class structure for satellite objects
 - [ ] Implement ISS and GEO satellite classes
 
