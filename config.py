@@ -16,14 +16,14 @@ coverage = { # percentage of ISS orbit covered by GEO relay satellites
 C = 299792458 # m/s, speed of light in vacuum
 BOLTZMANN_CONSTANT = 1.380649e-23 # J/K, Boltzmann's constant
 BANDWIDTH = 600e6 # Hz, bandwidth of the communication link (600 MHz for Ku-band)
-FREQUENCY = 1.50034e10 # 15.0034 GHz, frequency of the signal (Ku-band)
+FREQUENCY = 1.50034e10 # Hz, frequency of the signal (15.0034 GHz for Ku-band)
 
 # Transmitter Parameters
 TRANSMITTER_GAIN = 47.731 # dBi, gain of the transmitter antenna
 TRANSMITTER_POWER = 17.781513 # dBW, power of the transmitter
 
 # Receiver Parameters
-RECEIVER_GAIN = 30 # dBi, gain of the receiver antenna [TEMPORTARY VALUE, TO BE UPDATED]
+RECEIVER_GAIN = 65.233 # dBi, gain of the receiver antenna
 RECIEVER_POWER_THRESHOLD = -120 # dBW, minimum power required at the receiver for successful communication [TEMPORTARY VALUE, TO BE UPDATED]
 
 ## Noise and Loss Assumptions

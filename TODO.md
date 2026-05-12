@@ -12,9 +12,7 @@
 ## Link Budget Tool
 - [X] Create `link_budget.py` module
 - [X] Implement free-space path loss calculation using NumPy
-- [ ] Calculate Friis transmission equation components
-- [ ] Model atmospheric attenuation effects
-- [ ] Implement multipath propagation effects
+- [X] Calculate Friis transmission equation components
 - [ ] Create SNR (Signal-to-Noise Ratio) calculation functions
 - [ ] Implement link margin analysis
 - [ ] Calculate bit error rate (BER) curves
