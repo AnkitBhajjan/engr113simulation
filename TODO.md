@@ -4,6 +4,10 @@
 - [] Remove percent uptime comparison from different number of GEO satellites
 - [] Refactor into seperate functions for expandability
 
+## Visualization
+- [] Create BER(dB) vs. SNR(dB) graph
+- [] BER Curve
+
 ## Simulation
 - [] Pass distance to calculation functions to simulate realistic data transfer amounts
 - [] Create graphs and animations with variable distance
@@ -28,7 +32,9 @@
 
 ## Bit Error Rate Module
 - [ ] Calculate bit error rate (BER) curves
-- [ ] Implement Eb/N0 (Energy per bit / Noise power spectral density) calculations
+- [ ] Determine adequate protocal
+- [X] Implement Eb/N0 (Energy per bit / Noise power spectral density) calculations
+- [ ] Packet Error Rate
 
 ## Code Organization
 - [x] Add constants module for physical parameters
