@@ -46,6 +46,27 @@ def linearToDb(linear):
     
     return db
 
+def spectralEfficiency(data_rate=DATA_RATE, bandwidth=BANDWIDTH):
+    """
+    Calculate the spectral efficiency of the communication system in bits per second per hertz (bps/Hz) using Shannon's capacity formula.
+    
+    Parameters
+    ----------
+    data_rate : float, optional
+        Data rate in bits per second (default from config)
+    bandwidth : float, optional
+        Bandwidth in Hz (default from config)
+        
+    Returns
+    -------
+    float
+        Spectral efficiency in bps/Hz
+    """
+    
+    spectral_efficiency = data_rate / bandwidth
+    
+    return spectral_efficiency
+
 def noisePower(temperature=TEMPERATURE, bandwidth=BANDWIDTH):
     """
     Calculate the noise power in watts using the formula P = kTB, where k is Boltzmann's constant, T is the noise temperature in Kelvin, and B is the bandwidth in Hz.
@@ -155,7 +176,7 @@ def recieverThreshold():
     noise_power_dBW = linearToDb(noise_power_watts)
     
     # Calculate required SNR for the given data rate using Shannon's capacity formula
-    snr_required_linear = (2 ** (DATA_RATE / BANDWIDTH)) - 1
+    snr_required_linear = (2 ** (spectralEfficiency()) - 1)
     snr_required_db = linearToDb(snr_required_linear)
     
     # Calculate minimum required received power in dBW
