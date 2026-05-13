@@ -20,6 +20,7 @@ BANDWIDTH = 600e6 # Hz, bandwidth of the communication link (600 MHz for Ku-band
 FREQUENCY = 1.50034e10 # Hz, frequency of the signal (15.0034 GHz for Ku-band)
 DISTANCE_KM = 37000 # km, distance between transmitter and receiver (GEO to ISS)
 SHANNON_GAP = 3 # dB, gap from Shannon capacity to account for practical modulation and coding schemes
+ERROR_MARGIN = 1e-12 # margin to prevent BER from being exactly zero, which can cause issues in logarithmic calculations
 
 # Transmitter Parameters
 TRANSMITTER_GAIN = 47.731 # dBi, watts leaving the HPA, gain of the transmitter antenna
