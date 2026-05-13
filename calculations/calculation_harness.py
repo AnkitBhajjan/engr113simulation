@@ -20,6 +20,10 @@ print(f"   Received Power: {linkBudget():.2f} dBW")
 print(f"   Noise Power: {noisePower():.2e} W")
 print(f"   SNR: {snr_db:.2f} dB")
 
+print("\nLINK MARGIN CALCULATION")
+print(f"   Receiver Power Threshold: {recieverThreshold():.2f} dBW")
+print(f"   Link Margin: {linkMargin():.2f} dB")
+
 print("Project Calculations Complete")
 
 print("\n" + "=" * 60)

@@ -134,3 +134,31 @@ def signalToNoiseRatio(distance_km=DISTANCE_KM):
     snr_db = linearToDb(snr_linear)
     
     return snr_db
+
+def recieverThreshold():
+    """
+    Calculate the minimum required received power at the receiver for successful communication, based on the noise figure of the receiver and the required SNR for the given data rate.
+    
+    Returns
+    -------
+    float
+        Minimum required received power in dBW
+    """
+    
+    # Calculate noise figure of the receiver
+    nf_receiver_db = noiseFigureReciever()
+    
+    # Calculate noise power in watts
+    noise_power_watts = noisePower()
+    
+    # Convert noise power to dBW
+    noise_power_dBW = linearToDb(noise_power_watts)
+    
+    # Calculate required SNR for the given data rate using Shannon's capacity formula
+    snr_required_linear = (2 ** (DATA_RATE / BANDWIDTH)) - 1
+    snr_required_db = linearToDb(snr_required_linear)
+    
+    # Calculate minimum required received power in dBW
+    required_received_power_dBW = noise_power_dBW + nf_receiver_db + snr_required_db + SHANNON_GAP + IMPLEMENTATION_MARGIN
+    
+    return required_received_power_dBW

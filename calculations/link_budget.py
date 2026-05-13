@@ -1,5 +1,6 @@
 import numpy as np
 from config import *
+from snr import *
 
 def freeSpacePathLoss(distance_km=DISTANCE_KM, frequency_hz=FREQUENCY):
     """
@@ -50,7 +51,7 @@ def linkBudget(transmitter_power_dBW=TRANSMITTER_POWER, transmitter_gain_dBi=TRA
     
     return received_power_dBW
 
-def linkMargin(received_power_dBW=linkBudget(), receiver_threshold_dBW=RECIEVER_POWER_THRESHOLD):
+def linkMargin(received_power_dBW=linkBudget(), receiver_threshold_dBW=recieverThreshold()):
     """
     Calculate the link margin in dB, which is the difference between the received power and the receiver sensitivity threshold.
     
@@ -59,7 +60,7 @@ def linkMargin(received_power_dBW=linkBudget(), receiver_threshold_dBW=RECIEVER_
     received_power_dBW : float, optional
         Received power at the receiver in dBW (default calculated from link budget)
     receiver_threshold_dBW : float, optional
-        Minimum power required at the receiver for successful communication in dBW (default from config)
+        Minimum power required at the receiver for successful communication in dBW (default calculated from recieverThreshold function)
         
     Returns
     -------

@@ -13,14 +13,14 @@
 - [X] Create `link_budget.py` module
 - [X] Implement free-space path loss calculation using NumPy
 - [X] Calculate Friis transmission equation components
-- [ ] Create SNR (Signal-to-Noise Ratio) calculation functions
-- [ ] Implement link margin analysis
+- [X] Create SNR (Signal-to-Noise Ratio) calculation functions
+- [X] Implement link margin analysis
 - [ ] Calculate bit error rate (BER) curves
 
 ## SNR Analysis
 - [X] Create `snr.py` module
-- [ ] Calculate receiver noise temperature
-- [ ] Implement noise figure calculations
+- [X] Calculate receiver noise temperature
+- [X] Implement noise figure calculations
 - [ ] Create SNR vs. distance curves using NumPy arrays
 - [ ] Model SNR degradation over time
 - [ ] Implement Eb/N0 (Energy per bit / Noise power spectral density) calculations

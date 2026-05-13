@@ -1,5 +1,5 @@
 ## Constants and configuration parameters for the simulation
-DATA_RATE = 600  # Mbps
+DATA_RATE = 1.5e9  # bps, 1.5gbps
 ORBIT_TIME = 90 * 60  # seconds
 
 EARTH_RADIUS = 1 # relative units, not to scale
@@ -19,6 +19,7 @@ BOLTZMANN_CONSTANT = 1.380649e-23 # J/K, Boltzmann's constant
 BANDWIDTH = 600e6 # Hz, bandwidth of the communication link (600 MHz for Ku-band)
 FREQUENCY = 1.50034e10 # Hz, frequency of the signal (15.0034 GHz for Ku-band)
 DISTANCE_KM = 37000 # km, distance between transmitter and receiver (GEO to ISS)
+SHANNON_GAP = 3 # dB, gap from Shannon capacity to account for practical modulation and coding schemes
 
 # Transmitter Parameters
 TRANSMITTER_GAIN = 47.731 # dBi, watts leaving the HPA, gain of the transmitter antenna
@@ -26,7 +27,6 @@ TRANSMITTER_POWER = 17.781513 # dBW, power of the transmitter
 
 # Receiver Parameters
 RECEIVER_GAIN = 65.233 # dBi, gain of the receiver antenna
-RECIEVER_POWER_THRESHOLD = -120 # dBW, minimum power required at the receiver for successful communication [TEMPORTARY VALUE, TO BE UPDATED]
 
 ## Noise and Loss Assumptions
 IMPLEMENTATION_MARGIN = 2 # dB, to account for implementation losses and non-idealities in the system.
