@@ -11,7 +11,7 @@ from calculations.snr import *
 from calculations.ber import *
 
 print("=" * 60)
-print("ENGR113 Simulation Project - Signal-to-Noise Ratio Calculation")
+print("ENGR113 Simulation Project - Communication Link Analysis")
 print("=" * 60)
 
 print("\nSIGNAL-TO-NOISE RATIO CALCULATION")
