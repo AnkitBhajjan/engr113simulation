@@ -51,7 +51,7 @@ def linkBudget(transmitter_power_dBW=TRANSMITTER_POWER, transmitter_gain_dBi=TRA
     
     return received_power_dBW
 
-def linkMargin(received_power_dBW=linkBudget(), receiver_threshold_dBW=recieverThreshold()):
+def linkMargin(received_power_dBW=linkBudget(), receiver_threshold_dBW=receiverThreshold()):
     """
     Calculate the link margin in dB, which is the difference between the received power and the receiver sensitivity threshold.
     
@@ -60,7 +60,7 @@ def linkMargin(received_power_dBW=linkBudget(), receiver_threshold_dBW=recieverT
     received_power_dBW : float, optional
         Received power at the receiver in dBW (default calculated from link budget)
     receiver_threshold_dBW : float, optional
-        Minimum power required at the receiver for successful communication in dBW (default calculated from recieverThreshold function)
+        Minimum power required at the receiver for successful communication in dBW (default calculated from receiverThreshold function)
         
     Returns
     -------

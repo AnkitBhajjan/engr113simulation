@@ -110,7 +110,6 @@ def noiseFigureReciever():
         8. Analog-to-Digital Converter (ADC)
         9. FPGA (assumed to have negligible noise figure)
 
-    In the current implementation, we will only consider the noise figures of the LNA and Mixer, as they are the dominant contributors to the overall noise figure of the system. The other components are assumed to have negligible noise figures for this analysis.
     """
 
     # Convert dB to linear
@@ -159,7 +158,7 @@ def signalToNoiseRatio(distance_km=DISTANCE_KM):
     
     return snr_db
 
-def recieverThreshold():
+def receiverThreshold():
     """
     Calculate the minimum required received power at the receiver for successful communication, based on the noise figure of the receiver and the required SNR for the given data rate.
     
