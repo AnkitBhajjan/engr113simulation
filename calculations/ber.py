@@ -1,0 +1,22 @@
+import sys
+from pathlib import Path
+
+# Add parent directory to path to import config
+sys.path.insert(0, str(Path(__file__).parent.parent))
+
+import numpy as np
+from config import *
+from calculations.link_budget import *
+from calculations.snr import *
+
+def snrToBit():
+    """
+    Normalize SNR to bits per symbol using the spectral efficiency of the communication system.
+
+    Returns
+    -------
+    float
+        Normalized SNR in bits per symbol
+    """
+
+    eb_n0_db = signalToNoiseRatio() - linearToDb(spectralEfficiency())  
