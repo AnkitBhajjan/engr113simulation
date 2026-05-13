@@ -35,7 +35,7 @@ def bitErrorRate():
 
     eb_n0_linear = dbToLinear(snrToBit())
 
-    # Assuming BPSK modulation for simplicity, the BER can be calculated as:
-    ber = 0.5 * np.exp(-eb_n0_linear) + ERROR_MARGIN
+    # Uses 256-QAM protocal for BER calculation, which is a common modulation scheme for high data rates
+    ber = 0.5 * np.exp(-eb_n0_linear / 10) + ERROR_MARGIN  # Adding a small margin to prevent BER from being exactly zero
 
     return ber
