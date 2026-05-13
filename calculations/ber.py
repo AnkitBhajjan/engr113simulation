@@ -20,3 +20,22 @@ def snrToBit():
     """
 
     eb_n0_db = signalToNoiseRatio() - linearToDb(spectralEfficiency())  
+
+    return eb_n0_db
+
+def bitErrorRate():
+    """
+    Calculate the bit error rate (BER) for a given modulation scheme using the normalized SNR.
+
+    Returns
+    -------
+    float
+        Bit error rate (BER)
+    """
+
+    eb_n0_linear = dbToLinear(snrToBit())
+
+    # Assuming BPSK modulation for simplicity, the BER can be calculated as:
+    ber = 0.5 * np.exp(-eb_n0_linear) + ERROR_MARGIN
+
+    return ber
