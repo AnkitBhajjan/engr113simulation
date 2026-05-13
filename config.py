@@ -30,7 +30,7 @@ TRANSMITTER_POWER = 17.781513 # dBW, power of the transmitter
 RECEIVER_GAIN = 65.233 # dBi, gain of the receiver antenna
 
 ## Noise and Loss Assumptions
-IMPLEMENTATION_MARGIN = 2 # dB, to account for implementation losses and non-idealities in the system.
+IMPLEMENTATION_MARGIN = 4 # dB, to account for implementation losses and non-idealities in the system.
 LOSS_MISC = 3.3 + IMPLEMENTATION_MARGIN # dB, included feeder loss, pointing loss, polization loss, and other miscellaneous losses.
 
 ## Receiver Noise Factors and Gains
