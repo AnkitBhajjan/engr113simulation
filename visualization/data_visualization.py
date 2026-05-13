@@ -1,3 +1,9 @@
+import sys
+from pathlib import Path
+
+# Add parent directory to path to import config
+sys.path.insert(0, str(Path(__file__).parent.parent))
+
 from config import *
 
 
@@ -6,7 +12,7 @@ data = []
 for sats in coverage:
     connected_time = ORBIT_TIME * coverage[sats]
 
-    total_megabits = DATA_RATE * connected_time
+    total_megabits = DATA_RATE / 1e6 * connected_time
     total_gigabits = total_megabits / 1000
     total_gigabytes = total_gigabits / 8
     data.append(total_gigabytes)
