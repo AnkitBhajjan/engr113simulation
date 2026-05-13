@@ -114,6 +114,9 @@ def noiseFigureReciever():
     """
 
     # Convert dB to linear
+    nf_bandpass_linear = dbToLinear(BANDPASS_FILTER_NOISE_FACTOR)
+    gain_bandpass_linear = dbToLinear(BANDPASS_FILTER_GAIN)
+
     nf_lna_linear = dbToLinear(LNA_NOISE_FACTOR)
     gain_lna_linear = dbToLinear(LNA_GAIN)
 
@@ -121,7 +124,7 @@ def noiseFigureReciever():
     gain_mixer_linear = dbToLinear(MIXER_GAIN)
 
     # Friis formula for cascaded noise figure
-    f_total = nf_lna_linear + (nf_mixer_linear - 1) / gain_lna_linear
+    f_total = nf_bandpass_linear + (nf_lna_linear - 1) / gain_bandpass_linear + (nf_mixer_linear - 1) / (gain_bandpass_linear * gain_lna_linear)
 
     # Convert back to dB for readability
     nf_total_db = linearToDb(f_total)
