@@ -23,7 +23,7 @@ print(f"   SNR: {signalToNoiseRatio():.2f} dB")
 
 print("\nLINK MARGIN CALCULATION")
 print("=" * 20)
-print(f"   Spectral Efficiency: {spectralEfficiency():.2f} bps/Hz")
+print(f"   Spectral Efficiency: {spectralEfficiency():.2f} b/s/Hz")
 print(f"   Receiver Power Threshold: {dbToLinear(receiverThreshold())*1e9:.2f} nW")
 print(f"   Link Margin: {linkMargin():.2f} dB")
 

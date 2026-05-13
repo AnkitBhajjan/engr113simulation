@@ -1,16 +1,17 @@
 # Project TODO List
 
 ## Visualization - Refinements
-- [] Remove percent uptime comparison from different number of GEO satellites
-- [] Refactor into seperate functions for expandability
+- [ ] Output percent uptime for number of GEO to png for presentation
+- [ ] Refactor into seperate functions for expandability
+- [ ] Create function getDistance, use in simulation
 
 ## Visualization
-- [] Create BER(dB) vs. SNR(dB) graph
-- [] BER Curve
+- [ ] Create BER(dB) vs. SNR(dB) graph
+- [ ] BER Curve
+- 
 
 ## Simulation
-- [] Pass distance to calculation functions to simulate realistic data transfer amounts
-- [] Create graphs and animations with variable distance
+- [ ] Pass distance to calculation functions to simulate realistic data transfer amounts
 
 ## Link Budget Tool
 - [X] Create `link_budget.py` module
@@ -32,9 +33,10 @@
 
 ## Bit Error Rate Module
 - [ ] Calculate bit error rate (BER) curves
-- [ ] Determine adequate protocal
+- [X] Determine adequate protocal
 - [X] Implement Eb/N0 (Energy per bit / Noise power spectral density) calculations
-- [ ] Packet Error Rate
+- [X] Packet Error Rate
+- [ ] Compression/Spirious DR
 
 ## Code Organization
 - [x] Add constants module for physical parameters
