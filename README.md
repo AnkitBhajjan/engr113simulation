@@ -69,10 +69,12 @@ This module manages the physical balance of the signal. It determiens how much r
 
 ### freeSpacePathLoss
 Impliments the Friis transmission equation to calculate signal attenuation over distance.
+
 $$ L_{path} = 20\log_{10}(\frac{4\pi df}{c}) $$
 
 ### linkBudget
 Aggregates transmitter power, antenna gains, and miscellaneous system losses to find the final received power.
+
 $$ Link Budget = P_t + G_t + G_r - L_{freespace} - L_{misc} $$
 
 ### linkMargin
@@ -86,6 +88,7 @@ Contains conversion functions to transfer between linear and dB units.
 
 ### noisePower
 Calculates the noise floor using the Boltzmann constant, system temperature, and bandwidth.
+
 $$ P_N = kTB $$
 
 ### noiseFigureReciever
