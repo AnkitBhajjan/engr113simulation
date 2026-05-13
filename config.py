@@ -1,5 +1,4 @@
 ## Constants and configuration parameters for the simulation
-DATA_RATE = 1.5e9  # bps, 1.5gbps
 ORBIT_TIME = 90 * 60  # seconds
 
 EARTH_RADIUS = 1 # relative units, not to scale
@@ -16,11 +15,17 @@ coverage = { # percentage of ISS orbit covered by GEO relay satellites
 C = 299792458 # m/s, speed of light in vacuum
 TEMPERATURE = 290 # K, standard noise temperature
 BOLTZMANN_CONSTANT = 1.380649e-23 # J/K, Boltzmann's constant
-BANDWIDTH = 600e6 # Hz, bandwidth of the communication link (600 MHz for Ku-band)
-FREQUENCY = 1.50034e10 # Hz, frequency of the signal (15.0034 GHz for Ku-band)
-DISTANCE_KM = 37000 # km, distance between transmitter and receiver (GEO to ISS)
 SHANNON_GAP = 3 # dB, gap from Shannon capacity to account for practical modulation and coding schemes
 ERROR_MARGIN = 1e-12 # margin to prevent BER from being exactly zero, which can cause issues in logarithmic calculations
+
+# System Parameters
+DATA_RATE = 1.5e9  # bps, 1.5gbps
+BANDWIDTH = 600e6 # Hz, bandwidth of the communication link (600 MHz for Ku-band)
+FREQUENCY = 1.50034e10 # Hz, frequency of the signal (15.0034 GHz for Ku-band)
+BYTES_PER_PACKET = 2000 # bytes, size of the data packet being transmitted (including headers and payload)
+BITS_PER_SYMBOL = 8 # Specific to 256-QAM
+PACKET_SIZE_BITS = BITS_PER_SYMBOL * BYTES_PER_PACKET # Total bits in the container
+DISTANCE_KM = 37000 # km, distance between transmitter and receiver (GEO to ISS)
 
 # Transmitter Parameters
 TRANSMITTER_GAIN = 47.731 # dBi, watts leaving the HPA, gain of the transmitter antenna

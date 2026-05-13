@@ -31,6 +31,7 @@ print("\nBIT ERROR RATE CALCULATION")
 print("=" * 20)
 print(f"   Normalized SNR (Eb/N0): {snrToBit():.2f} dB/bit")
 print(f"   Bit Error Rate: {bitErrorRate():.2e}")
+print(f"   Packet Error Rate: {packetErrorRate():.2e}")
 
 
 print("\nProject Calculations Complete")
