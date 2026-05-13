@@ -15,8 +15,11 @@ coverage = { # percentage of ISS orbit covered by GEO relay satellites
 C = 299792458 # m/s, speed of light in vacuum
 TEMPERATURE = 290 # K, standard noise temperature
 BOLTZMANN_CONSTANT = 1.380649e-23 # J/K, Boltzmann's constant
+
+# System Design Assumptions
+IMPLEMENTATION_MARGIN = 4 # dB, to account for implementation losses and non-idealities in the system.
 SHANNON_GAP = 3 # dB, gap from Shannon capacity to account for practical modulation and coding schemes
-ERROR_MARGIN = 1e-12 # margin to prevent BER from being exactly zero, which can cause issues in logarithmic calculations
+ERROR_MARGIN = 1e-10 # margin to prevent BER from being exactly zero, which can cause issues in logarithmic calculations
 
 # System Parameters
 DATA_RATE = 1.5e9  # bps, 1.5gbps
@@ -35,7 +38,6 @@ TRANSMITTER_POWER = 17.781513 # dBW, power of the transmitter
 RECEIVER_GAIN = 65.233 # dBi, gain of the receiver antenna
 
 ## Noise and Loss Assumptions
-IMPLEMENTATION_MARGIN = 4 # dB, to account for implementation losses and non-idealities in the system.
 LOSS_MISC = 3.3 + IMPLEMENTATION_MARGIN # dB, included feeder loss, pointing loss, polization loss, and other miscellaneous losses.
 
 ## Receiver Noise Factors and Gains
