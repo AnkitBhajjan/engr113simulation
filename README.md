@@ -64,18 +64,44 @@ All simulation parameters are centralized in `config.py`, including:
 Modify these values to simulate different system configurations, frequency bands, or receiver designs.
 
 
-## Future Development
+## link_budget.py
+This module manages the physical balance of the signal. It determiens how much raw power reaches the receiver after traveling through space.
 
-The link budget tool will extend this project with:
-- Path loss calculations using NumPy arrays for vectorized operations
-- Atmospheric and environmental effects modeling
-- Antenna gain patterns and radiation diagrams
-- Comprehensive link margin analysis
-- Performance prediction under various conditions
+### freeSpacePathLoss
+Impliments the Friis transmission equation to calculate signal attenuation over distance.
+$$ L_{path} = 20\log_{10}(\frac{4\pi df}{c}) $$
+
+### linkBudget
+Aggregates transmitter power, antenna gains, and miscellaneous system losses to find the final received power.
+$$ Link Budget = P_t + G_t + G_r - L_{freespace} - L_{misc} $$
+
+### linkMargin
+Calculates buffer between reciever power and minimum required threshold
+
+## snr.py
+This module handles the component level calculations of the signal chain.
+
+### Conversions
+Contains conversion functions to transfer between linear and dB units.
+
+### noisePower
+Calculates the noise floor using the Boltzmann constant, system temperature, and bandwidth.
+$$ P_N = kTB $$
+
+### noiseFigureReciever
+Uses the Friis formula to determine the total system noise factore based on the LNA and mixer.  Onlt the LNA and mixer are considered, as they are the dominant contributors to the overall noise figure of the system. The other components are assumed to have negligible noise figures for this analysis, but may be added in later implementations.
+
+$$ F_{total} = F_{LNA} + \frac{F_{mixer} - 1}{G_{LNA}} $$
+
+### recieverThreshold
+Uses Shannon-Hartley theorem to determine the minimum power required to support target data rate and bandwidth, adding on constants to produce a realistic figure.
+
+$$ SNR_{required} = 2^{\frac{R}{B}} - 1 $$
+
 
 ## AI Usage Statement
 
-README and TODO generated with VSCode based claude, modified to fit project. Code hand written with VSCode autofill.
+README and TODO initially generated with VSCode based claude, heavily modified to fit project. Code hand written with VSCode autofill at most.
 
 # Authors
 Ankit Bhajjan

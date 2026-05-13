@@ -1,13 +1,12 @@
 # Project TODO List
 
-## Current Features - Refinements
-- [ ] Add input validation for coverage dictionary values
-- [ ] Implement error handling for invalid data rate or orbit time values
-- [ ] Add docstrings to all functions using NumPy style
-- [ ] Optimize animation frame rate and performance
-- [ ] Add command-line argument parsing for configuration parameters
-- [ ] Implement logging for data transmission calculations
-- [ ] Add distance for GEO to ISS animation
+## Visualization - Refinements
+- [] Remove percent uptime comparison from different number of GEO satellites
+- [] Refactor into seperate functions for expandability
+
+## Simulation
+- [] Pass distance to calculation functions to simulate realistic data transfer amounts
+- [] Create graphs and animations with variable distance
 
 ## Link Budget Tool
 - [X] Create `link_budget.py` module
@@ -15,7 +14,6 @@
 - [X] Calculate Friis transmission equation components
 - [X] Create SNR (Signal-to-Noise Ratio) calculation functions
 - [X] Implement link margin analysis
-- [ ] Calculate bit error rate (BER) curves
 
 ## SNR Analysis
 - [X] Create `snr.py` module
@@ -23,38 +21,19 @@
 - [X] Implement noise figure calculations
 - [ ] Create SNR vs. distance curves using NumPy arrays
 - [ ] Model SNR degradation over time
-- [ ] Implement Eb/N0 (Energy per bit / Noise power spectral density) calculations
-- [ ] Create SNR threshold analysis
 - [ ] Generate SNR visualization plots with Matplotlib
 - [ ] Implement SNR margin requirements for different modulation schemes
 - [ ] Model thermal noise and interference effects
 - [ ] Create SNR comparison tables for different configurations
 
-## Signal Propagation Module
-- [X] Create `propagation.py` module
-- [ ] Implement distance-dependent path loss models
-- [ ] Model rain attenuation for different frequencies
-- [ ] Add ionospheric effects calculation
-- [ ] Create antenna gain pattern functions
-- [ ] Implement polarization mismatch loss calculations
-
-## Testing & Validation
-- [ ] Create unit tests for link budget calculations
-- [ ] Validate results against theoretical models
-- [ ] Test edge cases (minimum/maximum distances)
-- [ ] Verify NumPy calculations with alternative methods
-- [ ] Add integration tests for complete workflows
+## Bit Error Rate Module
+- [ ] Calculate bit error rate (BER) curves
+- [ ] Implement Eb/N0 (Energy per bit / Noise power spectral density) calculations
 
 ## Code Organization
-- [ ] Refactor main simulation into functions (URGENT)
 - [x] Add constants module for physical parameters
 - [ ] Create class structure for satellite objects
 - [ ] Implement ISS and GEO satellite classes
+- [ ] Update README
 
-## Documentation
-- [ ] Add detailed docstrings to all functions
-- [ ] Create API documentation
-- [ ] Add example notebooks or scripts
-- [ ] Document mathematical models used
-- [ ] Create troubleshooting guide
 
