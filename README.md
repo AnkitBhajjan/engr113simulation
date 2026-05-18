@@ -63,9 +63,36 @@ All simulation parameters are centralized in `config.py`, including:
 
 Modify these values to simulate different system configurations, frequency bands, or receiver designs.
 
+## snr.py
+This module handles the component level calculations of the signal chain.
+
+### Conversions
+Contains conversion functions to transfer between linear and dB units according to the logarithmic scale.
+
+### noisePower
+Calculates the noise floor using the Boltzmann constant, system temperature, and bandwidth.
+
+$$ P_N = kTB $$
+
+### noiseFigureReciever
+Uses the Friis formula to determine the total system noise factor based on the LNA and mixer.  
+
+Only the Bandpass filter, the LNA, and mixer are considered, as they are the dominant contributors to the overall noise figure of the system. The other components are assumed to have negligible noise figures for this analysis, but will be added in later implementations.
+
+$$ F_{total} = F_1 + \frac{F_2-1}{G_1} + \frac{F_3-1}{G_1 G_2} + \frac{F_4-1}{G_1 G_2 G_3} + \cdots + \frac{F_n - 1}{G_1 G_2 \cdots G_{n-1}} $$
+
+### signalToNoiseRatio
+The signal to noise ratio is the comparison of the strength of a desired signal to the level of background noise. A higher SNR indicates a clearer signal, while a lower SNR means the noise is more prominent.
+
+$$ SNR = \frac{P_{signal}}{P_{noise}} $$
+
+### recieverThreshold
+Uses Shannon-Hartley theorem to determine the minimum power required to support target data rate and bandwidth, adding on constants to produce a realistic figure.
+
+$$ SNR_{required} = 2^{\frac{R}{B}} - 1 $$
 
 ## link_budget.py
-This module manages the physical balance of the signal. It determiens how much raw power reaches the receiver after traveling through space.
+This module manages the physical balance of the signal. It determines how much raw power reaches the receiver after traveling through space.
 
 ### freeSpacePathLoss
 Impliments the Friis transmission equation to calculate signal attenuation over distance.
@@ -80,26 +107,7 @@ $$ Link Budget = P_t + G_t + G_r - L_{freespace} - L_{misc} $$
 ### linkMargin
 Calculates buffer between reciever power and minimum required threshold
 
-## snr.py
-This module handles the component level calculations of the signal chain.
-
-### Conversions
-Contains conversion functions to transfer between linear and dB units.
-
-### noisePower
-Calculates the noise floor using the Boltzmann constant, system temperature, and bandwidth.
-
-$$ P_N = kTB $$
-
-### noiseFigureReciever
-Uses the Friis formula to determine the total system noise factore based on the LNA and mixer.  Onlt the LNA and mixer are considered, as they are the dominant contributors to the overall noise figure of the system. The other components are assumed to have negligible noise figures for this analysis, but may be added in later implementations.
-
-$$ F_{total} = F_{LNA} + \frac{F_{mixer} - 1}{G_{LNA}} $$
-
-### recieverThreshold
-Uses Shannon-Hartley theorem to determine the minimum power required to support target data rate and bandwidth, adding on constants to produce a realistic figure.
-
-$$ SNR_{required} = 2^{\frac{R}{B}} - 1 $$
+## ber.py
 
 
 ## AI Usage Statement
