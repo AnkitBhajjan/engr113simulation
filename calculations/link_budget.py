@@ -1,6 +1,6 @@
 import numpy as np
 from config import *
-from snr import *
+from calculations.snr import *
 
 def freeSpacePathLoss(distance_km=DISTANCE_KM, frequency_hz=FREQUENCY):
     """
