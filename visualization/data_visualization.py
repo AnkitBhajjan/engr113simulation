@@ -1,4 +1,3 @@
-#test from ankit
 import sys
 from pathlib import Path
 
@@ -47,63 +46,168 @@ plt.title("ISS Data Transmission Capability")
 plt.show()
 
 #animation
-#add ground control center locations
 import numpy as np
+import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
+from matplotlib.animation import PillowWriter
 
-# satellite angles
+# -----------------------------
+# Constants
+# -----------------------------
+EARTH_RADIUS = 1.0
+ISS_RADIUS = 1.2
+GEO_RADIUS = 2.2
+
+# GEO satellite positions (0°, 120°, 240°)
 geo_angles = np.radians([0, 120, 240])
 
-fig, ax = plt.subplots(figsize=(6,6))
-ax.set_xlim(-2.5, 2.5)
-ax.set_ylim(-2.5, 2.5)
-ax.set_aspect('equal')
+# Handoff settings
+HANDOFF_ANGLE = 6   # degrees (~scaled version of 3 min overlap)
 
-earth = plt.Circle((0,0), EARTH_RADIUS, color='blue')
+# -----------------------------
+# Figure setup
+# -----------------------------
+fig, ax = plt.subplots(figsize=(7,7))
+
+ax.set_xlim(-2.6, 2.6)
+ax.set_ylim(-2.6, 2.6)
+ax.set_aspect('equal')
+ax.set_facecolor("black")
+
+# Earth
+earth = plt.Circle((0,0), EARTH_RADIUS,
+                   color='royalblue')
 ax.add_patch(earth)
 
+# -----------------------------
+# GEO satellites
+# -----------------------------
 geo_x = GEO_RADIUS * np.cos(geo_angles)
 geo_y = GEO_RADIUS * np.sin(geo_angles)
 
-ax.scatter(geo_x, geo_y, color='red', s=100, label='GEO Satellites')
+ax.scatter(geo_x, geo_y,
+           color='red',
+           s=120,
+           label='GEO Satellites',
+           zorder=5)
 
-iss_dot, = ax.plot([], [], 'ko', markersize=8)
+# -----------------------------
+# ISS point
+# -----------------------------
+iss_dot, = ax.plot([], [],
+                   'wo',
+                   markersize=8,
+                   label='ISS')
 
+# -----------------------------
+# Communication lines
+# -----------------------------
 lines = []
 
 for _ in range(3):
-    line, = ax.plot([], [], 'y--')
+    line, = ax.plot([], [],
+                    color='lime',
+                    linestyle='-',
+                    linewidth=2.5,
+                    alpha=0.9)
     lines.append(line)
 
+# -----------------------------
+# Sector boundary lines
+# -----------------------------
+# These divide Earth into 120° regions
+boundary_angles = np.radians([60, 180, 300])
+
+for ang in boundary_angles:
+
+    x = 2.5 * np.cos(ang)
+    y = 2.5 * np.sin(ang)
+
+    ax.plot([0, x],
+            [0, y],
+            color='cyan',
+            linestyle='--',
+            alpha=0.25,
+            linewidth=2)
+
+# -----------------------------
+# Animation update
+# -----------------------------
 def update(frame):
+    angle_deg = frame
+    angle = np.radians(angle_deg)
 
-    angle = np.radians(frame)
-
+    # ISS position
     iss_x = ISS_RADIUS * np.cos(angle)
     iss_y = ISS_RADIUS * np.sin(angle)
-
     iss_dot.set_data([iss_x], [iss_y])
 
+    # -------------------------
+    # Determine closest GEO
+    # -------------------------
+    distances = []
     for i in range(3):
-
         dx = geo_x[i] - iss_x
         dy = geo_y[i] - iss_y
+        distances.append(np.sqrt(dx**2 + dy**2))
+    closest = np.argmin(distances)
 
-        distance = np.sqrt(dx**2 + dy**2)
+    # -------------------------
+    # Determine handoff region
+    # -------------------------
+    normalized_angle = angle_deg % 360
 
-        if distance < 3:
-            lines[i].set_data([iss_x, geo_x[i]],
-                              [iss_y, geo_y[i]])
+    # Each boundary sits between two known satellites:
+    #   60°  → handoff between sat 0 (at 0°)  and sat 1 (at 120°)
+    #  180°  → handoff between sat 1 (at 120°) and sat 2 (at 240°)
+    #  300°  → handoff between sat 2 (at 240°) and sat 0 (at 0°)
+    handoff_pairs = {
+        60:  (0, 1),
+        180: (1, 2),
+        300: (2, 0),
+    }
+
+    active_sats = [closest]
+    for center, (sat_a, sat_b) in handoff_pairs.items():
+        diff = abs(normalized_angle - center)
+        # Also handle wrap-around at 0°/360°
+        diff = min(diff, 360 - diff)
+        if diff < HANDOFF_ANGLE:
+            active_sats = [sat_a, sat_b]
+            break
+
+    # -------------------------
+    # Draw lines
+    # -------------------------
+    for i in range(3):
+        if i in active_sats:
+            lines[i].set_data([iss_x, geo_x[i]], [iss_y, geo_y[i]])
         else:
             lines[i].set_data([], [])
 
     return [iss_dot] + lines
 
-ani = FuncAnimation(fig, update,
-                    frames=np.arange(0,360,2),
-                    interval=50)
+# -----------------------------
+# Animation
+# -----------------------------
+ani = FuncAnimation(
+    fig,
+    update,
+    frames=np.arange(0, 360, 2),
+    interval=50
+)
 
-plt.legend()
-plt.title("ISS Communication with GEO Relay Satellites")
+# Save GIF
+ani.save("iss_geo_handoff.gif",
+         writer=PillowWriter(fps=20))
+
+# Labels
+plt.legend(loc='upper right')
+plt.title("ISS Communication with GEO Relay Satellites",
+          color='white')
+
+# Make axes cleaner
+ax.set_xticks([])
+ax.set_yticks([])
 
 plt.show()
