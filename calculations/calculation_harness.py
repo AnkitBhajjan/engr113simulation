@@ -40,6 +40,11 @@ print(f"   Packets Per Second: {packetsPerSecond():.2f}")
 print(f"   Expected Packets in One Orbit: {packetsPerSecond() * ORBIT_TIME:,.0f}")
 print(f"   Data Transmitted in One Orbit: {(packetsPerSecond() * ORBIT_TIME * PACKET_SIZE_BITS / (8 * 1024 * 1024))*1e-3:,.2f} TB")
 
+print("\nTIME IN VIEW DURING ONE ORBIT CALCULATION")
+print("=" * 20)
+print(f"   Time seen by one satellite: {(ORBIT_TIME / 180)-((HANDOFF_TIME/60)*3):.2f} minutes")
+print(f"   Time seen by two satellites: {HANDOFF_TIME * 3 / 60:.2f} minutes")
+
 print("\nProject Calculations Complete")
 print("" + "=" * 60)
 
