@@ -38,6 +38,15 @@ plt.grid(True, which="both", linestyle=":")
 plt.legend()
 plt.show()
 
+plt.figure(figsize=(10, 5))
+plt.plot(distance_range_km, path_losses, label='Free Space Path Loss', color='crimson')
+plt.title('ISS-to-GEO Free Space Path Losses Over Orbital Path', fontname=fontname, fontsize=14)
+plt.xlabel('Distance (km)', fontname=fontname)
+plt.ylabel('Path Loss (dB)', fontname=fontname)
+plt.grid(True, which="both", linestyle=":")
+plt.legend()
+plt.show()
+
 # snr vs ber graph
 
 
