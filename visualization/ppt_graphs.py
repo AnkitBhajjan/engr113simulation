@@ -22,11 +22,12 @@ distance_range_km = np.linspace(35000, 44000, 500)
 path_losses = [freeSpacePathLoss(distance_km=d) for d in distance_range_km]
 received_powers = [linkBudget(distance_km=d) for d in distance_range_km]
 link_margins = [linkMargin(received_power_dBW=p) for p in received_powers]
+signal_to_noise_ratios = [signalToNoiseRatio(distance_km=d) for d in distance_range_km]
 
 # Formatting
 fontname = "serif"
 
-# Plotting
+# Link margin graph
 plt.figure(figsize=(10, 5))
 plt.plot(distance_range_km, link_margins, label='Link Margin (1024-QAM)', color='crimson')
 plt.ylim(15, 18.5)
@@ -38,11 +39,22 @@ plt.grid(True, which="both", linestyle=":")
 plt.legend()
 plt.show()
 
+# Path loss graph
 plt.figure(figsize=(10, 5))
 plt.plot(distance_range_km, path_losses, label='Free Space Path Loss', color='crimson')
 plt.title('ISS-to-GEO Free Space Path Losses Over Orbital Path', fontname=fontname, fontsize=14)
 plt.xlabel('Distance (km)', fontname=fontname)
 plt.ylabel('Path Loss (dB)', fontname=fontname)
+plt.grid(True, which="both", linestyle=":")
+plt.legend()
+plt.show()
+
+# SNR graph
+plt.figure(figsize=(10, 5))
+plt.plot(distance_range_km, signal_to_noise_ratios, label='Signal-to-Noise Ratio', color='crimson')
+plt.title('ISS-to-GEO Signal-to-Noise Ratio Over Orbital Path', fontname=fontname, fontsize=14)
+plt.xlabel('Distance (km)', fontname=fontname)
+plt.ylabel('SNR (dB)', fontname=fontname)
 plt.grid(True, which="both", linestyle=":")
 plt.legend()
 plt.show()

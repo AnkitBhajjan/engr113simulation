@@ -6,7 +6,6 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 
 import numpy as np
 from config import *
-from calculations.link_budget import *
 
 def dbToLinear(db):
     """
@@ -144,6 +143,8 @@ def signalToNoiseRatio(distance_km=DISTANCE_KM):
     float
         Signal-to-noise ratio in dB
     """
+    from calculations.link_budget import linkBudget
+
     received_power_dBW = linkBudget(distance_km=distance_km)
     noise_power_watts = noisePower()
     
