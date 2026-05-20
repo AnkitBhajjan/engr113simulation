@@ -1,5 +1,6 @@
 ## Constants and configuration parameters for the simulation
 ORBIT_TIME = 90 * 60  # seconds
+HANDOFF_TIME = 3 * 60 # 3 minutes in seconds, time taken for handoff between satellites
 
 EARTH_RADIUS = 1 # relative units, not to scale
 ISS_RADIUS = 1.3
@@ -22,13 +23,13 @@ SHANNON_GAP = 3 # dB, gap from Shannon capacity to account for practical modulat
 ERROR_MARGIN = 1e-10 # margin to prevent BER from being exactly zero, which can cause issues in logarithmic calculations
 
 # System Parameters
-DATA_RATE = 1.05e9  # bps, data rate of the communication link (1.5 Gbps for 1024-QAM)
-BANDWIDTH = 150e6 # Hz, bandwidth of the communication link (150 MHz for Ku-band)
+DATA_RATE = 1.5e9  # bps, 1.5gbps
+BANDWIDTH = 600e6 # Hz, bandwidth of the communication link (600 MHz for Ku-band)
 FREQUENCY = 1.50034e10 # Hz, frequency of the signal (15.0034 GHz for Ku-band)
-BYTES_PER_PACKET = 4096 # bytes, size of the data packet being transmitted (including headers and payload)
-BITS_PER_SYMBOL = 10 # Specific to 1024-QAM
+BYTES_PER_PACKET = 2000 # bytes, size of the data packet being transmitted (including headers and payload)
+BITS_PER_SYMBOL = 8 # Specific to 256-QAM
 PACKET_SIZE_BITS = BITS_PER_SYMBOL * BYTES_PER_PACKET # Total bits in the container
-DISTANCE_KM = 42000 # km, distance between transmitter and receiver (GEO to ISS)
+DISTANCE_KM = 37000 # km, distance between transmitter and receiver (GEO to ISS)
 
 # Transmitter Parameters
 TRANSMITTER_GAIN = 47.731 # dBi, watts leaving the HPA, gain of the transmitter antenna
