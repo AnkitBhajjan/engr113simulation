@@ -61,3 +61,45 @@ def packetErrorRate(packet_size_bits=PACKET_SIZE_BITS):  # Assuming a standard E
     per = 1 - (1 - ber) ** packet_size_bits
 
     return per
+
+def packetTransmissionTime(packet_size_bits=PACKET_SIZE_BITS, data_rate=DATA_RATE):
+    """
+    Calculate the time required to transmit a packet based on its size and the data rate.
+
+    Parameters
+    ----------
+    packet_size_bits : int, optional
+        Size of the packet in bits (default is 1500 bytes converted to bits)
+    data_rate : float, optional
+        Data rate of the communication link in bits per second (default is 1.5 Gbps)
+
+    Returns
+    -------
+    float
+        Time required to transmit the packet in seconds
+    """
+
+    transmission_time = packet_size_bits / data_rate
+
+    return transmission_time
+
+def packetsPerSecond(data_rate=DATA_RATE, packet_size_bits=PACKET_SIZE_BITS):
+    """
+    Calculate the number of packets that can be transmitted per second based on the data rate and packet size.
+
+    Parameters
+    ----------
+    data_rate : float, optional
+        Data rate of the communication link in bits per second (default is 1.5 Gbps)
+    packet_size_bits : int, optional
+        Size of the packet in bits (default is 1500 bytes converted to bits)
+
+    Returns
+    -------
+    float
+        Number of packets that can be transmitted per second
+    """
+
+    pps = data_rate / packet_size_bits
+
+    return pps

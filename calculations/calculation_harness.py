@@ -33,6 +33,12 @@ print(f"   Normalized SNR (Eb/N0): {snrToBit():.2f} dB/bit")
 print(f"   Bit Error Rate: {bitErrorRate():.2e}")
 print(f"   Packet Error Rate: {packetErrorRate():.2e}")
 
+print("\nDATA RATE CALCULATIONS")
+print("=" * 20)
+print(f"   Packet Transmission Time: {packetTransmissionTime()*1e6:.2f} ms")
+print(f"   Packets Per Second: {packetsPerSecond():.2f}")
+print(f"   Expected Packets in One Orbit: {packetsPerSecond() * ORBIT_TIME:,.0f}")
+print(f"   Data Transmitted in One Orbit: {(packetsPerSecond() * ORBIT_TIME * PACKET_SIZE_BITS / (8 * 1024 * 1024))*1e-3:,.2f} TB")
 
 print("\nProject Calculations Complete")
 print("" + "=" * 60)
