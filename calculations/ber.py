@@ -23,7 +23,7 @@ def snrToBit():
 
     return eb_n0_db
 
-def bitErrorRate():
+def bitErrorRate(eb_n0_db=snrToBit()):
     """
     Calculate the bit error rate (BER) for a given modulation scheme using the normalized SNR.
 
@@ -33,7 +33,7 @@ def bitErrorRate():
         Bit error rate (BER)
     """
 
-    eb_n0_linear = dbToLinear(snrToBit())
+    eb_n0_linear = dbToLinear(eb_n0_db)
 
     # Uses 256-QAM protocal for BER calculation, which is a common modulation scheme for high data rates
     ber = 0.5 * np.exp(-eb_n0_linear / 10) + ERROR_MARGIN  # Adding a small margin to prevent BER from being exactly zero
