@@ -28,6 +28,12 @@ signal_to_noise_ratios = [signalToNoiseRatio(distance_km=d) for d in distance_ra
 ebn0_sweep = np.linspace(0, 30)
 ber_vals = [bitErrorRate(eb_n0_db=eb) for eb in ebn0_sweep]
 
+#per calc
+per_vals_commands = [packetErrorRate(packet_size_bits=4096, ber=ber) for ber in ber_vals]
+per_vals_video = [packetErrorRate(packet_size_bits=1316, ber=ber) for ber in ber_vals]
+per_vals_telemetry = [packetErrorRate(packet_size_bits=1115, ber=ber) for ber in ber_vals]
+per_vals_voice = [packetErrorRate(packet_size_bits=320, ber=ber) for ber in ber_vals]
+
 # Formatting
 fontname = "serif"
 
@@ -63,13 +69,16 @@ plt.grid(True, which="both", linestyle=":")
 plt.legend()
 plt.show()
 
-# snr vs ber graph
+# snr vs packet error rate graph
 plt.figure(figsize=(10, 5))
-plt.plot(ebn0_sweep, ber_vals, label='Bit Error Rate (1024-QAM)', color='crimson')
+plt.plot(ebn0_sweep, per_vals_commands, label='Command Packet Error Rate (4096)', color='crimson')
+plt.plot(ebn0_sweep, per_vals_video, label='Video Packet Error Rate (1316)', color='blue')
+plt.plot(ebn0_sweep, per_vals_telemetry, label='Telemetry Packet Error Rate (1115)', color='green')
+plt.plot(ebn0_sweep, per_vals_voice, label='Voice Packet Error Rate (320)', color='orange')
 plt.yscale('log')
-plt.title('Bit Error Rate vs Normalized SNR (Eb/N0)', fontname=fontname, fontsize=14)
+plt.title('Packet Error Rate vs Normalized SNR (Eb/N0)', fontname=fontname, fontsize=14)
 plt.xlabel('Eb/N0 (dB)', fontname=fontname)
-plt.ylabel('Bit Error Rate (BER)', fontname=fontname)
+plt.ylabel('Packet Error Rate (PER)', fontname=fontname)
 plt.grid(True, which="both", linestyle=":")
 plt.legend()
 plt.show()

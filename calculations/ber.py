@@ -40,7 +40,7 @@ def bitErrorRate(eb_n0_db=snrToBit()):
 
     return ber
 
-def packetErrorRate(packet_size_bits=PACKET_SIZE_BITS):  # Assuming a standard Ethernet frame size of 1500 bytes
+def packetErrorRate(packet_size_bits=PACKET_SIZE_BITS, ber=bitErrorRate()):  # Assuming a standard Ethernet frame size of 1500 bytes
     """
     Calculate the packet error rate (PER) based on the bit error rate (BER) and the size of the packet.
 
@@ -48,14 +48,14 @@ def packetErrorRate(packet_size_bits=PACKET_SIZE_BITS):  # Assuming a standard E
     ----------
     packet_size_bits : int, optional
         Size of the packet in bits (default is 1500 bytes converted to bits)
+    ber : float, optional
+        Bit error rate (default is calculated from the current SNR)
 
     Returns
     -------
     float
         Packet error rate (PER)
     """
-
-    ber = bitErrorRate()
     
     # Assuming independent bit errors, the PER can be calculated as:
     per = 1 - (1 - ber) ** packet_size_bits
