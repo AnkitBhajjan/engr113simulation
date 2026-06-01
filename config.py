@@ -42,11 +42,11 @@ RECEIVER_GAIN = 65.233 # dBi, gain of the receiver antenna
 LOSS_MISC = 3.3 + IMPLEMENTATION_MARGIN # dB, included feeder loss, pointing loss, polization loss, and other miscellaneous losses.
 
 ## Receiver Noise Factors and Gains
-BANDPASS_FILTER_NOISE_FACTOR = 1 # dB, noise figure of the bandpass filter   
+BANDPASS_FILTER_NOISE_FIGURE = 1 # dB, noise figure of the bandpass filter   
 BANDPASS_FILTER_GAIN = 0.1 # dB, gain of the bandpass filter, assumed to be negligible 
 
-LNA_NOISE_FACTOR = 3 # dB, noise figure of the Low Noise Amplifier (LNA)
+LNA_NOISE_FIGURE = 3 # dB, noise figure of the Low Noise Amplifier (LNA)
 LNA_GAIN = 30 # dB, gain of the Low Noise Amplifier (LNA)
 
-MIXER_NOISE_FACTOR = 8.5 # dB, noise figure of the Mixer
+MIXER_NOISE_FIGURE = 8.5 # dB, noise figure of the Mixer
 MIXER_GAIN = -7.5 # dB, gain of the Mixer
