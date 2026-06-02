@@ -71,6 +71,8 @@ print(f"   Bit Error Rate: {bitErrorRate():.2e}")
 print(f"   Packet Error Rate: {packetErrorRate():.2e}")
 
 print_section("DATA RATE CALCULATIONS")
+print(f"   Baud Rate: {BAUD_RATE/1e6:.1f} Msymbols/s")
+print(f"   Roll-off Factor: {ROLL_OFF_FACTOR:.0%}")
 print(f"   Occupied Bandwidth: {OCCUPIED_BANDWIDTH/1e6:.1f} MHz")
 print(f"   Packet Transmission Time: {packetTransmissionTime()*1e6:.1f} ms")
 print(f"   Packets Per Second: {packetsPerSecond():.0f} packets/s")

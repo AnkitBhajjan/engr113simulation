@@ -25,11 +25,11 @@ DISTANCE_KM = 44000 # km, distance between transmitter and receiver (GEO to ISS)
 IMPLEMENTATION_MARGIN = 4 # dB, to account for implementation losses and non-idealities in the system.
 SHANNON_GAP = 3 # dB, gap from Shannon capacity to account for practical modulation and coding schemes
 ERROR_MARGIN = 1e-10 # margin to prevent BER from being exactly zero, which can cause issues in logarithmic calculations
-ROLL_OFF_FACTOR = 0.25 # Roll-off factor for the pulse shaping filter, which affects the occupied bandwidth of the signal.
+ROLL_OFF_FACTOR = 0.30 # Roll-off factor for the pulse shaping filter, which affects the occupied bandwidth of the signal.
 
 # System Parameters
 DATA_RATE = 1.05e9  # bps, 1.05 Gbps
-BANDWIDTH = 500e6 # Hz, bandwidth of the communication link (500 MHz for Ku-band)
+BANDWIDTH = 600e6 # Hz, bandwidth of the communication link (500 MHz for Ku-band)
 FREQUENCY = 1.50034e10 # Hz, frequency of the signal (15.0034 GHz for Ku-band)
 CODE_RATE = 0.75 # 3/4 coding rate for error correction, for every 4 bits transmitted, 3 are data and 1 is error correction
 R_GROSS = DATA_RATE / CODE_RATE # Gross data rate before error correction
@@ -39,7 +39,7 @@ BYTES_PER_PACKET = 1518 # bytes, size of the data packet being transmitted (incl
 BITS_PER_SYMBOL = 10 # Specific to 1024-QAM
 PACKET_SIZE_BITS = BITS_PER_SYMBOL * BYTES_PER_PACKET # Total bits in the container
 BAUD_RATE = R_GROSS / (math.log2(BITS_PER_SYMBOL)) # Symbols per second
-OCCUPIED_BANDWIDTH = BAUD_RATE * 1 + (ROLL_OFF_FACTOR) # Occupied bandwidth with roll-off factor
+OCCUPIED_BANDWIDTH = BAUD_RATE * (1 + (ROLL_OFF_FACTOR)) # Occupied bandwidth with roll-off factor
 
 # Transmitter Parameters
 TRANSMITTER_GAIN = 47.731 # dBi, watts leaving the HPA, gain of the transmitter antenna
