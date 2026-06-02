@@ -19,7 +19,7 @@ coverage = { # percentage of ISS orbit covered by GEO relay satellites
 C = 299792458 # m/s, speed of light in vacuum
 TEMPERATURE = 290 # K, standard noise temperature
 BOLTZMANN_CONSTANT = 1.380649e-23 # J/K, Boltzmann's constant
-DISTANCE_KM = 42000 # km, distance between transmitter and receiver (GEO to ISS)
+DISTANCE_KM = 44000 # km, distance between transmitter and receiver (GEO to ISS)
 
 # System Design Assumptions
 IMPLEMENTATION_MARGIN = 4 # dB, to account for implementation losses and non-idealities in the system.
