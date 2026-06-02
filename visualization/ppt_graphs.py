@@ -29,10 +29,10 @@ ebn0_sweep = np.linspace(0, 30)
 ber_vals = [bitErrorRate(eb_n0_db=eb) for eb in ebn0_sweep]
 
 #per calc
-per_vals_commands = [packetErrorRate(packet_size_bits=4096, ber=ber) for ber in ber_vals]
-per_vals_video = [packetErrorRate(packet_size_bits=1316, ber=ber) for ber in ber_vals]
-per_vals_telemetry = [packetErrorRate(packet_size_bits=1115, ber=ber) for ber in ber_vals]
-per_vals_voice = [packetErrorRate(packet_size_bits=320, ber=ber) for ber in ber_vals]
+per_vals_ttc = [packetErrorRate(packet_size_bits=128, ber=ber) for ber in ber_vals]
+per_vals_ethernet = [packetErrorRate(packet_size_bits=2048, ber=ber) for ber in ber_vals]
+per_vals_bulk1 = [packetErrorRate(packet_size_bits=4096, ber=ber) for ber in ber_vals]
+per_vals_bulk2 = [packetErrorRate(packet_size_bits=8192, ber=ber) for ber in ber_vals]
 
 # Formatting
 fontname = "serif"
@@ -71,10 +71,10 @@ plt.show()
 
 # snr vs packet error rate graph
 plt.figure(figsize=(10, 5))
-plt.plot(ebn0_sweep, per_vals_commands, label='Command Packet Error Rate (4096)', color='crimson')
-plt.plot(ebn0_sweep, per_vals_video, label='Video Packet Error Rate (1316)', color='blue')
-plt.plot(ebn0_sweep, per_vals_telemetry, label='Telemetry Packet Error Rate (1115)', color='green')
-plt.plot(ebn0_sweep, per_vals_voice, label='Voice Packet Error Rate (320)', color='orange')
+plt.plot(ebn0_sweep, per_vals_ttc, label=' TTC Packet Error Rate (128)', color='crimson')
+plt.plot(ebn0_sweep, per_vals_ethernet, label='Ethernet Packet Error Rate (1518)', color='blue')
+plt.plot(ebn0_sweep, per_vals_bulk1, label='Bulk Packet Error Rate (4096)', color='green')
+plt.plot(ebn0_sweep, per_vals_bulk2, label='Bulk Packet Error Rate (8192)', color='orange')
 plt.yscale('log')
 plt.title('Packet Error Rate vs Normalized SNR (Eb/N0)', fontname=fontname, fontsize=14)
 plt.xlabel('Eb/N0 (dB)', fontname=fontname)
@@ -82,5 +82,3 @@ plt.ylabel('Packet Error Rate (PER)', fontname=fontname)
 plt.grid(True, which="both", linestyle=":")
 plt.legend()
 plt.show()
-
-
