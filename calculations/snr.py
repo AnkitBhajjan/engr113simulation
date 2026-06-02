@@ -5,6 +5,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 import numpy as np
+import math
 from config import *
 
 def dbToLinear(db):
@@ -45,7 +46,7 @@ def linearToDb(linear):
     
     return db
 
-def spectralEfficiency(data_rate=DATA_RATE, bandwidth=BANDWIDTH):
+def spectralEfficiency(data_rate=R_GROSS, bandwidth=BANDWIDTH):
     """
     Calculate the spectral efficiency of the communication system in bits per second per hertz (bps/Hz) using Shannon's capacity formula.
     
@@ -62,7 +63,7 @@ def spectralEfficiency(data_rate=DATA_RATE, bandwidth=BANDWIDTH):
         Spectral efficiency in bps/Hz
     """
     
-    spectral_efficiency = data_rate / bandwidth
+    spectral_efficiency = math.log2(PACKET_SIZE_BITS) * CODE_RATE  # bits per symbol * coding rate gives effective bits per symbol after error correction
     
     return spectral_efficiency
 
@@ -179,7 +180,7 @@ def receiverThreshold():
     noise_power_dBW = linearToDb(noise_power_watts)
     
     # Calculate required SNR for the given data rate using Shannon's capacity formula
-    snr_required_linear = (2 ** (spectralEfficiency()) - 1)
+    snr_required_linear = (2 ** (R_GROSS / (BANDWIDTH * CODE_RATE)) - 1)  # SNR required to achieve the given data rate at the specified bandwidth
     snr_required_db = linearToDb(snr_required_linear)
     
     # Calculate minimum required received power in dBW

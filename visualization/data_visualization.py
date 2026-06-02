@@ -12,7 +12,7 @@ data = []
 for sats in coverage:
     connected_time = ORBIT_TIME * coverage[sats]
 
-    total_megabits = DATA_RATE / 1e6 * connected_time
+    total_megabits = R_GROSS / 1e6 * connected_time
     total_gigabits = total_megabits / 1000
     total_gigabytes = total_gigabits / 8
     data.append(total_gigabytes)

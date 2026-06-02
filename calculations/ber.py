@@ -62,7 +62,7 @@ def packetErrorRate(packet_size_bits=PACKET_SIZE_BITS, ber=bitErrorRate()):  # A
 
     return per
 
-def packetTransmissionTime(packet_size_bits=PACKET_SIZE_BITS, data_rate=DATA_RATE):
+def packetTransmissionTime(packet_size_bits=PACKET_SIZE_BITS, data_rate=R_GROSS):
     """
     Calculate the time required to transmit a packet based on its size and the data rate.
 
@@ -83,7 +83,7 @@ def packetTransmissionTime(packet_size_bits=PACKET_SIZE_BITS, data_rate=DATA_RAT
 
     return transmission_time
 
-def packetsPerSecond(data_rate=DATA_RATE, packet_size_bits=PACKET_SIZE_BITS):
+def packetsPerSecond(data_rate=R_GROSS, packet_size_bits=PACKET_SIZE_BITS):
     """
     Calculate the number of packets that can be transmitted per second based on the data rate and packet size.
 
