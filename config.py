@@ -31,10 +31,10 @@ ROLL_OFF_FACTOR = 0.25 # Roll-off factor for the pulse shaping filter, which aff
 DATA_RATE = 1.05e9  # bps, 1.05 Gbps
 BANDWIDTH = 500e6 # Hz, bandwidth of the communication link (500 MHz for Ku-band)
 FREQUENCY = 1.50034e10 # Hz, frequency of the signal (15.0034 GHz for Ku-band)
-
-# Link Design Parameters
 CODE_RATE = 0.75 # 3/4 coding rate for error correction, for every 4 bits transmitted, 3 are data and 1 is error correction
 R_GROSS = DATA_RATE / CODE_RATE # Gross data rate before error correction
+
+# Data Design Parameters
 BYTES_PER_PACKET = 1518 # bytes, size of the data packet being transmitted (including headers and payload)
 BITS_PER_SYMBOL = 10 # Specific to 1024-QAM
 PACKET_SIZE_BITS = BITS_PER_SYMBOL * BYTES_PER_PACKET # Total bits in the container

@@ -40,8 +40,6 @@ fontname = "serif"
 # Link margin graph
 plt.figure(figsize=(10, 5))
 plt.plot(distance_range_km, link_margins, label='Link Margin (1024-QAM)', color='crimson')
-plt.ylim(15, 18.5)
-plt.yticks(np.arange(15, 18.6, 0.5))
 plt.title('ISS-to-GEO Link Margin Over Orbital Path', fontname=fontname, fontsize=14)
 plt.xlabel('Distance (km)', fontname=fontname)
 plt.ylabel('Margin (dB)', fontname=fontname)
