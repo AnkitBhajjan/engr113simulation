@@ -65,7 +65,8 @@ print(f"   Receiver Power Threshold: {receiverThreshold() + 30:.1f} dBm")
 print(f"   Link Margin: {linkMargin():.1f} dB")
 
 print_section("BIT AND PACKET ERROR RATES")
-print(f"   Normalized SNR (Eb/N0): {snrToBit():.1f} dB/bit")
+print(f"   Normalized SNR to Bit (Eb/N0): {snrToBit():.1f} dB/bit")
+print(f"   Normalized SNR to Symbol (Es/N0): {snrToSymbol():.1f} dB/symbol")
 print(f"   Bit Error Rate: {bitErrorRate():.2e}")
 print(f"   Packet Error Rate: {packetErrorRate():.2e}")
 

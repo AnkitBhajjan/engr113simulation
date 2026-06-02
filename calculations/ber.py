@@ -23,6 +23,20 @@ def snrToBit():
 
     return eb_n0_db
 
+def snrToSymbol():
+    """
+    Normalize SNR to symbols per second using the spectral efficiency of the communication system.
+
+    Returns
+    -------
+    float
+        Normalized SNR in symbols per second
+    """
+
+    es_n0_db = signalToNoiseRatio() - linearToDb(spectralEfficiency() * BANDWIDTH / BAUD_RATE)  # Adjusting for bandwidth and symbol rate
+
+    return es_n0_db
+
 def bitErrorRate(eb_n0_db=snrToBit()):
     """
     Calculate the bit error rate (BER) for a given modulation scheme using the normalized SNR.
